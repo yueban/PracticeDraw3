@@ -11,9 +11,16 @@ import android.view.View;
 public class Practice14GetFontMetricsView extends View {
     Paint paint1 = new Paint(Paint.ANTI_ALIAS_FLAG);
     Paint paint2 = new Paint(Paint.ANTI_ALIAS_FLAG);
-    String[] texts = {"A", "a", "J", "j", "Â", "â"};
+    String[] texts = { "A", "a", "J", "j", "Â", "â" };
     int top = 200;
     int bottom = 400;
+
+    {
+        paint1.setStyle(Paint.Style.STROKE);
+        paint1.setStrokeWidth(20);
+        paint1.setColor(Color.parseColor("#E91E63"));
+        paint2.setTextSize(160);
+    }
 
     public Practice14GetFontMetricsView(Context context) {
         super(context);
@@ -27,13 +34,6 @@ public class Practice14GetFontMetricsView extends View {
         super(context, attrs, defStyleAttr);
     }
 
-    {
-        paint1.setStyle(Paint.Style.STROKE);
-        paint1.setStrokeWidth(20);
-        paint1.setColor(Color.parseColor("#E91E63"));
-        paint2.setTextSize(160);
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -43,13 +43,14 @@ public class Practice14GetFontMetricsView extends View {
         // 使用 Paint.getFontMetrics() 计算出文字的显示区域
         // 然后计算出文字的绘制位置，从而让文字上下居中
         // 这种居中算法的优点是，可以让不同的文字的 baseline 对齐
-
+        Paint.FontMetrics metrics = paint2.getFontMetrics();
+        float yOffset = (metrics.descent + metrics.ascent) / 2;
         int middle = (top + bottom) / 2;
-        canvas.drawText(texts[0], 100, middle, paint2);
-        canvas.drawText(texts[1], 200, middle, paint2);
-        canvas.drawText(texts[2], 300, middle, paint2);
-        canvas.drawText(texts[3], 400, middle, paint2);
-        canvas.drawText(texts[4], 500, middle, paint2);
-        canvas.drawText(texts[5], 600, middle, paint2);
+        canvas.drawText(texts[0], 100, middle - yOffset, paint2);
+        canvas.drawText(texts[1], 200, middle - yOffset, paint2);
+        canvas.drawText(texts[2], 300, middle - yOffset, paint2);
+        canvas.drawText(texts[3], 400, middle - yOffset, paint2);
+        canvas.drawText(texts[4], 500, middle - yOffset, paint2);
+        canvas.drawText(texts[5], 600, middle - yOffset, paint2);
     }
 }

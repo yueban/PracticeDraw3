@@ -11,6 +11,12 @@ public class Practice09SetTextScaleXView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     String text = "Hello HenCoder";
 
+    {
+        paint.setTextSize(60);
+
+        // 使用 Paint.setTextScaleX() 来改变文字宽度
+    }
+
     public Practice09SetTextScaleXView(Context context) {
         super(context);
     }
@@ -23,16 +29,15 @@ public class Practice09SetTextScaleXView extends View {
         super(context, attrs, defStyleAttr);
     }
 
-    {
-        paint.setTextSize(60);
-
-        // 使用 Paint.setTextScaleX() 来改变文字宽度
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
+        paint.setTextScaleX(1.2f);
         canvas.drawText(text, 50, 100, paint);
+        paint.setTextScaleX(1);
+        paint.setLetterSpacing(0.1f);
+        canvas.drawText(text, 50, 200, paint);
+        paint.setTextScaleX(1.2f);
+        canvas.drawText(text, 50, 300, paint);
     }
 }

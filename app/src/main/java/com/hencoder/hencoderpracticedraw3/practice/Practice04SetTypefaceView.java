@@ -13,6 +13,12 @@ public class Practice04SetTypefaceView extends View {
     String text = "Hello HenCoder";
     Typeface typeface;
 
+    {
+        paint.setTextSize(60);
+
+        typeface = Typeface.createFromAsset(getContext().getAssets(), "Satisfy-Regular.ttf");
+    }
+
     public Practice04SetTypefaceView(Context context) {
         super(context);
     }
@@ -25,12 +31,6 @@ public class Practice04SetTypefaceView extends View {
         super(context, attrs, defStyleAttr);
     }
 
-    {
-        paint.setTextSize(60);
-
-        typeface = Typeface.createFromAsset(getContext().getAssets(), "Satisfy-Regular.ttf");
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -40,8 +40,10 @@ public class Practice04SetTypefaceView extends View {
         // 第一处：填入 null 来设置默认字体
         canvas.drawText(text, 50, 100, paint);
         // 第二处：填入 Typeface.SERIF 来设置衬线字体（宋体）
+        paint.setTypeface(Typeface.SERIF);
         canvas.drawText(text, 50, 200, paint);
         // 第三处：填入 typeface 对象来使用 assets 目录下的 "Satisfy-Regular.ttf" 文件
+        paint.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "Satisfy-Regular.ttf"));
         canvas.drawText(text, 50, 300, paint);
     }
 }

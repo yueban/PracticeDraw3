@@ -11,6 +11,12 @@ public class Practice08SetTextSkewXView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     String text = "Hello HenCoder";
 
+    {
+        paint.setTextSize(60);
+
+        // 使用 Paint.setTextSkewX() 来让文字倾斜
+    }
+
     public Practice08SetTextSkewXView(Context context) {
         super(context);
     }
@@ -23,16 +29,10 @@ public class Practice08SetTextSkewXView extends View {
         super(context, attrs, defStyleAttr);
     }
 
-    {
-        paint.setTextSize(60);
-
-        // 使用 Paint.setTextSkewX() 来让文字倾斜
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
+        paint.setTextSkewX(-0.25f);
         canvas.drawText(text, 50, 100, paint);
     }
 }

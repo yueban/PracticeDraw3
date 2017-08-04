@@ -11,6 +11,12 @@ public class Practice07SetUnderlineTextView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     String text = "Hello HenCoder";
 
+    {
+        paint.setTextSize(60);
+
+        // 使用 Paint.setUnderlineText() 来设置下划线
+    }
+
     public Practice07SetUnderlineTextView(Context context) {
         super(context);
     }
@@ -23,16 +29,10 @@ public class Practice07SetUnderlineTextView extends View {
         super(context, attrs, defStyleAttr);
     }
 
-    {
-        paint.setTextSize(60);
-
-        // 使用 Paint.setUnderlineText() 来设置下划线
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
+        paint.setUnderlineText(true);
         canvas.drawText(text, 50, 100, paint);
     }
 }

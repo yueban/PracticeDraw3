@@ -11,6 +11,12 @@ public class Practice05SetFakeBoldTextView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     String text = "Hello HenCoder";
 
+    {
+        paint.setTextSize(60);
+
+        // 使用 Paint.setFakeBoldText() 来加粗文字
+    }
+
     public Practice05SetFakeBoldTextView(Context context) {
         super(context);
     }
@@ -23,16 +29,10 @@ public class Practice05SetFakeBoldTextView extends View {
         super(context, attrs, defStyleAttr);
     }
 
-    {
-        paint.setTextSize(60);
-
-        // 使用 Paint.setFakeBoldText() 来加粗文字
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
+        paint.setFakeBoldText(true);
         canvas.drawText(text, 50, 100, paint);
     }
 }
